@@ -7,6 +7,7 @@ namespace DatingApp.API.Data
        It is a bridge between your domain or entity classes and the database. */
     public class DataContext : DbContext
     {
+        // Constructor
         public DataContext(DbContextOptions<DataContext> options ) : base (options) {}
 
         public DbSet<Value> Values { get; set; } // Values will be become the table name when we scaffold our database

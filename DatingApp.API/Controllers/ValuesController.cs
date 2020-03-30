@@ -23,7 +23,7 @@ namespace DatingApp.API.Controllers
         
         // GET api/values
         [HttpGet]
-        public async Task<IActionResult> GetValues()
+        public async Task<IActionResult> GetValues() // async Task keeps the thread open
         {
             var values = await _context.Values.ToListAsync();  // asynchronous code (await)
 
