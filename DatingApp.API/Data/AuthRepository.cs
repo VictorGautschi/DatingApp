@@ -30,6 +30,8 @@ namespace DatingApp.API.Data
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt)){
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+                // loop through byte array and see that each character matches
                 for (int i = 0; i < computedHash.Length; i++){
                     if (computedHash[i] != passwordHash[i]) 
                         return false;
@@ -50,11 +52,11 @@ namespace DatingApp.API.Data
             await _context.SaveChangesAsync();
 
             return user;
-
         }
 
         private void createPasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
+            // using statement calls Dispose method to dispose of code once we are done with it
             using (var hmac = new System.Security.Cryptography.HMACSHA512()){
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));

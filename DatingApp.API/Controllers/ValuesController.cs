@@ -31,7 +31,7 @@ namespace DatingApp.API.Controllers
         }
 
         // GET api/values/5
-        [AllowAnonymous]
+        [AllowAnonymous] // Negates the [Authorize] - so this doesn't enact authorization requirements
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {

@@ -27,6 +27,8 @@ namespace DatingApp.API
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddCors();
+
+            // To make available for injection
             services.AddScoped<IAuthRepository, AuthRepository>();
             
             // Authentication Middleware
